@@ -25,6 +25,12 @@ jobs:
           "https://portal.nersc.gov/project/dune/data/2x2/simulation/productions/MiniRun4_1E19_RHC/MiniRun4_1E19_RHC.flow/FLOW/MiniRun4_1E19_RHC.flow.$i.FLOW.h5"
         done
 
+    - name: Clone ArrakisND repository
+      run: |
+        git clone https://github.com/Neutron-Calibration-in-DUNE/ArrakisND.git
+        cd ArrakisND
+        git checkout develop
+
     - name: Determine number of cores
       id: ncores
       run: echo "::set-output name=num_cores::$(nproc)"
@@ -32,7 +38,7 @@ jobs:
     - name: Run Python script inside Docker container
       run: |
         docker run --gpus all \
-          -v ${{ github.workspace }}/arrakis_nd:/workspace/arrakis_nd \
+          -v ${{ github.workspace }}/ArrakisND:/workspace/arrakis_nd \
           -v ${{ github.workspace }}/config:/workspace/config \
           -v ${{ github.workspace }}/data:/workspace/data \
           infophysics/nersc:latest \
