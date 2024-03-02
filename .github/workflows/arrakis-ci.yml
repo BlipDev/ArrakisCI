@@ -6,7 +6,7 @@ on:
 
 jobs:
   run-docker:
-    runs-on: ubuntu-latest
+    runs-on: arrakis_ci
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
