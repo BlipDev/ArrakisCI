@@ -39,7 +39,7 @@ jobs:
 
     - name: Run Python script inside Docker container
       run: |
-        docker run --gpus all \
+        docker run \
           -v ${{ github.workspace }}/ArrakisND:/workspace/arrakis_nd \
           -v ${{ github.workspace }}/config:/workspace/config \
           -v ${{ github.workspace }}/data:/workspace/data \
