@@ -6,7 +6,9 @@ on:
 
 jobs:
   run-docker:
-    runs-on: arrakis_ci
+    runs-on: 
+      group: arrakis_ci
+      labels: arrakis_ci
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
